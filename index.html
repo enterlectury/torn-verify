@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torn Account Verification</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1a1a2e;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: #ccc;
+    }
+    .card {
+      background: #16213e;
+      border: 1px solid #c00;
+      border-radius: 6px;
+      padding: 40px 48px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(204,0,0,0.3);
+    }
+    .logo {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fff;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .logo span { color: #c00; }
+    .subtitle {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 28px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    .alert-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+    h2 {
+      color: #c00;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #aaa;
+      margin-bottom: 24px;
+    }
+    .field {
+      text-align: left;
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    input {
+      width: 100%;
+      padding: 10px 14px;
+      background: #0f3460;
+      border: 1px solid #2a4a7a;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+    }
+    input:focus { border-color: #c00; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #c00;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      letter-spacing: 1px;
+      margin-top: 8px;
+    }
+    .btn:hover { background: #a00; }
+    .footer {
+      margin-top: 20px;
+      font-size: 11px;
+      color: #555;
+    }
+    /* Red banner to show this is attacker-controlled */
+    .attacker-banner {
+      background: #c00;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 6px 0;
+      text-align: center;
+      letter-spacing: 1px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- This banner confirms to the reviewer that the user landed on the attacker's page -->
+  <div class="attacker-banner">⚠ ATTACKER-CONTROLLED PAGE — victim was redirected here from www.torn.com</div>
+
+  <div class="card" style="margin-top: 40px;">
+    <div class="logo">TOR<span>N</span></div>
+    <div class="subtitle">Account Security</div>
+
+    <div class="alert-icon">🔒</div>
+    <h2>Identity Verification Required</h2>
+    <p>
+      Our systems detected unusual activity on your account.<br>
+      Please verify your identity to restore full access.
+    </p>
+
+    <div class="field">
+      <label>Torn Username</label>
+      <input type="text" placeholder="Enter your username" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" placeholder="Enter your password" autocomplete="off">
+    </div>
+    <div class="field">
+      <label>Two-Factor Code (if enabled)</label>
+      <input type="text" placeholder="6-digit code" autocomplete="off" maxlength="6">
+    </div>
+
+    <button class="btn" onclick="alert('PoC complete — credentials would be submitted to attacker here.')">
+      VERIFY ACCOUNT
+    </button>
+
+    <div class="footer">
+      This page was reached by clicking a button rendered inside www.torn.com.<br>
+      The victim never left torn.com until this redirect.
+    </div>
+  </div>
+</body>
+</html>
